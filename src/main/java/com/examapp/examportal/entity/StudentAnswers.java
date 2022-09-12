@@ -16,7 +16,20 @@ public class StudentAnswers {
     public StudentAnswers() {
     }
 
-    public StudentAnswers(int id, String answers, String subject, int student_id) {
+    
+    
+    
+    public StudentAnswers(String answers, String subject, int student_id) {
+		super();
+		this.answers = answers;
+		this.subject = subject;
+		this.student_id = student_id;
+	}
+
+
+
+
+	public StudentAnswers(int id, String answers, String subject, int student_id) {
         this.id = id;
         this.answers = answers;
         this.subject = subject;

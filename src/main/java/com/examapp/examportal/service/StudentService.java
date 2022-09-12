@@ -26,10 +26,9 @@ public class StudentService {
         return studentRepository.findPasswordByName(name);
     }
 
-    public boolean addAnswers(int student_id , String student_subject , StudentAnswers studentAnswers){
-        studentAnswers.setStudent_id(student_id);
-        studentAnswers.setSubject(student_subject);
-        studentAnswersRepository.save(studentAnswers);
+    public boolean addAnswers(int student_id , String student_subject , String answer){
+    	StudentAnswers s = new StudentAnswers(student_subject,answer,student_id);
+        studentAnswersRepository.save(s);
         return true;
     }
 

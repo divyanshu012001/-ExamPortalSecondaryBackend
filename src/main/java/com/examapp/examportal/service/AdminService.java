@@ -1,16 +1,23 @@
 package com.examapp.examportal.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.examapp.examportal.entity.Admin;
+import com.examapp.examportal.entity.Subject;
 import com.examapp.examportal.repository.AdminRepository;
+import com.examapp.examportal.repository.SubjectRepository;
 
 @Service
 public class AdminService {
 
 	@Autowired
 	AdminRepository adminRepository;
+	
+	@Autowired
+	SubjectRepository subjectRepository;
 	
 	public void saveUser(Admin admin) {
 		adminRepository.save(admin);
@@ -22,5 +29,13 @@ public class AdminService {
 	
 	public String fetchPassByName(String name) {
 		return adminRepository.findPasswordByUserName(name);
+	}
+	
+	public void saveSubject(Subject subject) {
+		subjectRepository.save(subject);
+	}
+	
+	public List<Subject> fetchDataBySubject(String subject) {
+		return (List<Subject>)subjectRepository.findBySubject(subject);
 	}
 }

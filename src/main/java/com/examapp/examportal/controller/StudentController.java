@@ -51,7 +51,8 @@ public class StudentController {
     public boolean addAnswer(@PathVariable int student_id ,@PathVariable String student_subject ,  @RequestBody StudentAnswers studentAnswers){
         System.out.println(student_id);
         System.out.println(student_subject);
-        service.addAnswers(student_id,student_subject,studentAnswers);
+        System.out.print(studentAnswers.getAnswers());
+        service.addAnswers(student_id,student_subject,studentAnswers.getAnswers());
         return true;
     }
 

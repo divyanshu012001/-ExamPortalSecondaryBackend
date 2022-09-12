@@ -1,7 +1,11 @@
 package com.examapp.examportal.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examapp.examportal.encrypter.PasswordDecrypter;
 import com.examapp.examportal.encrypter.PasswordEncrypter;
 import com.examapp.examportal.entity.Admin;
+import com.examapp.examportal.entity.Subject;
 import com.examapp.examportal.service.AdminService;
 
 @RestController
@@ -50,6 +55,18 @@ public class AdminController {
 			return false;
 		}
 		return true; 
+	}
+	
+	@PostMapping("/addSubject")
+	public void addSubject(@RequestBody Subject subject) {
+		adminService.saveSubject(subject);
+	}
+	
+	@GetMapping("/displayAnswers/{subject}")
+	public List<Subject> displayAnswers(@PathVariable String subject) {
+		System.out.print(subject);
+		List<Subject> list = adminService.fetchDataBySubject(subject);
+		return list;
 	}
 }
 
