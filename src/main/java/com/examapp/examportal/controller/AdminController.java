@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,6 +68,16 @@ public class AdminController {
 		System.out.print(subject);
 		List<Subject> list = adminService.fetchDataBySubject(subject);
 		return list;
+	}
+	
+	@GetMapping("/viewAllSubjects")
+	public List<Subject> getAllSubject(){
+		return adminService.getAllSub();
+	}
+	
+	@DeleteMapping("/deleteSubject/{id}")
+	public void deleteSubject(@PathVariable int id) {
+		adminService.deleteSub(id);
 	}
 }
 

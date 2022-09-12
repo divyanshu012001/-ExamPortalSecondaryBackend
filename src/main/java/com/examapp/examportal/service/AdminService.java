@@ -38,4 +38,12 @@ public class AdminService {
 	public List<Subject> fetchDataBySubject(String subject) {
 		return (List<Subject>)subjectRepository.findBySubject(subject);
 	}
+	
+	public List<Subject> getAllSub(){
+		return subjectRepository.findAll();
+	}
+	
+	public void deleteSub(int id) {
+		subjectRepository.deleteById(id);
+	}
 }
