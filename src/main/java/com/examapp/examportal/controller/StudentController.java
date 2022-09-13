@@ -55,5 +55,10 @@ public class StudentController {
         service.addAnswers(student_id,student_subject,studentAnswers.getAnswers());
         return true;
     }
+    
+    @PostMapping("/displayAnswersByStudent/{student_id}/{subject}")
+    public void displayAnswersByStudent(@PathVariable int student_id,@PathVariable String subject) {
+    	
+    }
 
 }
