@@ -79,5 +79,10 @@ public class AdminController {
 	public void deleteSubject(@PathVariable int id) {
 		adminService.deleteSub(id);
 	}
+	
+	//Show Subject----------------
+	
+	//Show Student exam details------------
+	
 }
 
