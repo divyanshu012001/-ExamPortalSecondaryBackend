@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.examapp.examportal.entity.Admin;
+import com.examapp.examportal.entity.StudentAnswers;
+import com.examapp.examportal.entity.StudentAnswers;
 import com.examapp.examportal.entity.Subject;
 import com.examapp.examportal.repository.AdminRepository;
+import com.examapp.examportal.repository.StudentAnswersRepository;
 import com.examapp.examportal.repository.SubjectRepository;
 
 @Service
@@ -18,6 +21,9 @@ public class AdminService {
 	
 	@Autowired
 	SubjectRepository subjectRepository;
+	
+	@Autowired
+	StudentAnswersRepository studentAnswersRepository;
 	
 	public void saveUser(Admin admin) {
 		adminRepository.save(admin);
@@ -45,5 +51,9 @@ public class AdminService {
 	
 	public void deleteSub(int id) {
 		subjectRepository.deleteById(id);
+	}
+	
+	public List<StudentAnswers> fetchAnswersByStudentId(int id){
+		return (List<StudentAnswers>)studentAnswersRepository.findAnswersById(id);
 	}
 }

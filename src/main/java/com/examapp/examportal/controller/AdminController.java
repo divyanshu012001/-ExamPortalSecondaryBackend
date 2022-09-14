@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examapp.examportal.encrypter.PasswordDecrypter;
 import com.examapp.examportal.encrypter.PasswordEncrypter;
 import com.examapp.examportal.entity.Admin;
+import com.examapp.examportal.entity.StudentAnswers;
 import com.examapp.examportal.entity.Subject;
 import com.examapp.examportal.service.AdminService;
 
@@ -24,6 +25,7 @@ public class AdminController {
 
 	@Autowired
 	AdminService adminService;
+	
 	
 	@PostMapping("/adminregistration")
 	public boolean adminRegistration(@RequestBody Admin admin) {
@@ -83,6 +85,11 @@ public class AdminController {
 	//Show Subject----------------
 	
 	//Show Student exam details------------
+	@GetMapping("/displaystudentexamdetails/{student_id}")
+	public List<StudentAnswers> displayStudentExamdetails(@PathVariable int student_id) {
+		List<StudentAnswers> list = adminService.fetchAnswersByStudentId(student_id);
+		return list;
+	}
 	
 }
 

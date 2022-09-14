@@ -31,7 +31,7 @@ public class StudentService {
     }
 
     public boolean addAnswers(int student_id , String student_subject , String answer){
-    	StudentAnswers s = new StudentAnswers(student_subject,answer,student_id);
+    	StudentAnswers s = new StudentAnswers(answer,student_subject,student_id);
         studentAnswersRepository.save(s);
         return true;
     }
