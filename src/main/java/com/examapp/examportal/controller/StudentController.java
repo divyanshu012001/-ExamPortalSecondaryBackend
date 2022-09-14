@@ -1,12 +1,20 @@
 package com.examapp.examportal.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.examapp.examportal.encrypter.PasswordDecrypter;
 import com.examapp.examportal.encrypter.PasswordEncrypter;
 import com.examapp.examportal.entity.Student;
 import com.examapp.examportal.entity.StudentAnswers;
 import com.examapp.examportal.service.StudentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin
@@ -35,16 +43,21 @@ public class StudentController {
 
 
     @PostMapping("/studentlogin")
-    public boolean studentLogin(@RequestBody Student s){
+    public Map<String, String> studentLogin(@RequestBody Student s){
+    	 HashMap<String, String> map = new HashMap<>();
         String tempName = s.getEmail();
         String tempPass = s.getPassword();
         String enPass = service.fetchPasswordByName(tempName);
+        String stId = service.fetchIdByName(tempName);
         PasswordDecrypter pd = new PasswordDecrypter();
         boolean check = pd.decrypter(tempPass, enPass);
         if(check == false){
-            return false;
+        	map.put("State", "False");
+            return map;
         }
-        return true;
+        map.put("State", "True");
+        map.put("StudentId", stId);
+        return map;
     }
 
     @PostMapping("/addAnswer/{student_id}/{student_subject}")

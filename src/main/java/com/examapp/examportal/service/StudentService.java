@@ -25,6 +25,10 @@ public class StudentService {
     public String fetchPasswordByName(String name){
         return studentRepository.findPasswordByName(name);
     }
+    
+    public String fetchIdByName(String name) {
+    	return studentRepository.findIdByStudent(name);
+    }
 
     public boolean addAnswers(int student_id , String student_subject , String answer){
     	StudentAnswers s = new StudentAnswers(student_subject,answer,student_id);

@@ -1,9 +1,8 @@
 package com.examapp.examportal.repository;
 
-import com.examapp.examportal.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+import com.examapp.examportal.entity.Student;
 
 //@Repository
 public interface StudentRepository extends JpaRepository<Student,Integer> {
@@ -12,5 +11,8 @@ public interface StudentRepository extends JpaRepository<Student,Integer> {
 
     @Query("select password from Student s where email = ?1")
     public String findPasswordByName(String name);
+    
+    @Query("select id from Student s where email =?1")
+    public String findIdByStudent(String name);
 
 }
