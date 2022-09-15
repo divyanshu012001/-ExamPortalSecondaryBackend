@@ -2,7 +2,7 @@ package com.examapp.examportal.entity;
 import javax.persistence.*;
 @Entity
 //@Table(name = "Student")
-public class Student {
+public class Students {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,10 +11,10 @@ public class Student {
     private String email;
     private String password;
 
-    public Student() {
+    public Students() {
     }
 
-    public Student(int id, String fullName, String email, String password) {
+    public Students(int id, String fullName, String email, String password) {
         this.id = id;
         this.fullName = fullName;
         this.email = email;

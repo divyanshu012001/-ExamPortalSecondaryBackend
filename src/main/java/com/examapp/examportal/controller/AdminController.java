@@ -1,7 +1,9 @@
 package com.examapp.examportal.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
+import com.examapp.examportal.entity.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examapp.examportal.encrypter.PasswordDecrypter;
 import com.examapp.examportal.encrypter.PasswordEncrypter;
 import com.examapp.examportal.entity.Admin;
+<<<<<<< Updated upstream
 import com.examapp.examportal.entity.StudentAnswers;
 import com.examapp.examportal.entity.Subject;
+=======
+import com.examapp.examportal.entity.AdminSubjects;
+>>>>>>> Stashed changes
 import com.examapp.examportal.service.AdminService;
 
 @RestController
@@ -61,22 +67,34 @@ public class AdminController {
 	}
 	
 	@PostMapping("/addSubject")
-	public void addSubject(@RequestBody Subject subject) {
+	public void addSubject(@RequestBody AdminSubjects subject) {
+//		HashMap<String,String> data = new HashMap<>();
+//		data.put(subject.getQuestion(),subject.getAnswer());
+		System.out.println(subject);
 		adminService.saveSubject(subject);
 	}
 	
 	@GetMapping("/displayAnswers/{subject}")
-	public List<Subject> displayAnswers(@PathVariable String subject) {
+	public List<AdminSubjects> displayAnswers(@PathVariable String subject) {
 		System.out.print(subject);
-		List<Subject> list = adminService.fetchDataBySubject(subject);
+		List<AdminSubjects> list = adminService.fetchDataBySubject(subject);
 		return list;
 	}
 	
 	@GetMapping("/viewAllSubjects")
-	public List<Subject> getAllSubject(){
+	public List<AdminSubjects> getAllSubject(){
 		return adminService.getAllSub();
 	}
-	
+
+	@GetMapping("/viewOnlySubjects")
+	public List<String> getOnlySubjects(){
+		return adminService.getOnlySubs();
+	}
+
+	@GetMapping("/viewAllStudents")
+	public List<String> getAllStudents(){
+		return adminService.getAllStudents();
+	}
 	@DeleteMapping("/deleteSubject/{id}")
 	public void deleteSubject(@PathVariable int id) {
 		adminService.deleteSub(id);

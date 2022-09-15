@@ -4,32 +4,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 @Entity
-public class Subject {
+public class AdminSubjects {
 
 	@Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
 	private String subject;
 	private String question;
 	private String answer;
-	
-	public Subject() {
+	public AdminSubjects() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Subject(String subject, String question, String answer) {
-		super();
-		this.subject = subject;
-		this.question = question;
-		this.answer = answer;
-	}
-
-	public Subject(int id, String subject, String question, String answer) {
-		super();
+	public AdminSubjects(int id, String subject, String question, String answer) {
 		this.id = id;
 		this.subject = subject;
 		this.question = question;
@@ -67,6 +58,14 @@ public class Subject {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "AdminSubjects{" +
+				"id=" + id +
+				", subject='" + subject + '\'' +
+				", question='" + question + '\'' +
+				", answer='" + answer + '\'' +
+				'}';
+	}
 }
