@@ -83,6 +83,10 @@ public class AdminController {
 	}
 	
 	//Show Subject----------------
+	@GetMapping("/viewOnlySubjects")
+	public List<String> getOnlySubjects(){
+	   return adminService.getOnlySubs();
+	}
 	
 	//Show Student exam details------------
 	@GetMapping("/displaystudentexamdetails/{student_id}")
